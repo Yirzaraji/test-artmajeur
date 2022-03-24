@@ -1,0 +1,22 @@
+{
+    "window.zoomLevel": 1,
+    "emmet.includeLanguages": { "twig": "html", "aspnetcorerazor": "html" },
+    "json.schemas": [],
+    "notebook.kernelProviderAssociations": [],
+    "launch": {
+  
+      "inputs": [],
+      "configurations": [],
+      "compounds": []
+    },
+  
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "editor.codeActionsOnSave": null,
+    "editor.formatOnSave": true,
+    "liveshare.authenticationProvider": "GitHub"
+  }
