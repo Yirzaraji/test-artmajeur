@@ -20,7 +20,6 @@ security:
 
       form_login:
         login_path: account_login
-        check_path: account_login
 
     # activate different ways to authenticate
     # https://symfony.com/doc/current/security.html#firewalls-authentication
