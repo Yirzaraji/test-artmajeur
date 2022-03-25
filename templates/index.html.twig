@@ -6,21 +6,20 @@
 <style></style>
 <div class="container-fluid mt-5">
     <div class="row">
-    <div class="col-md-3">&nbsp;</div>
-    <div class="col-md-6">
-        {{form_start(contactForm)}}
-            <h3 class="mb-4"><b>CONTACTEZ MOI.</b></h3>
-            <div class="form-group">
-                {{ form_row(contactForm.name)}}
-                {{ form_row(contactForm.mail)}}
-                {{ form_row(contactForm.subject)}}
-                {{ form_row(contactForm.message)}}
-            </div>
-        {{form_end(contactForm)}}
-    </div>
-    <div class="col-md-3">&nbsp;</div>   
+        <div class="col-2 mt-3">
+            {{form_start(contactForm)}}
+                <h3 class=" mb-4"><b>CONTACTEZ NOUS</b></h3>
+                    <div class="row mb-1">
+                        {{ form_row(contactForm.name)}}
+                        {{ form_row(contactForm.mail)}}
+                        {{ form_row(contactForm.subject)}}
+                        {{ form_row(contactForm.message)}}
+                    </div>
+                </div>
+            {{form_end(contactForm)}}
+        </div>
+        <div class="col-10">
+        </div>
     </div>
 </div>
-
-
 {% endblock %}
