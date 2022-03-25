@@ -31,6 +31,9 @@ class Contact
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(min = 10, max = 400,
+     * minMessage = "Min {{ limit }} characters long",
+     * maxMessage = "Max {{ limit }} characters")
      */
     private $message;
 
