@@ -1,36 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomePageController!{% endblock %}
+{% block title %}Contact{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="col-9 col-sm-5 col-xl-3 text-center d-flex align-items-center mt-3">
-    {{form_start(contactForm)}}
-        <h3 class="titleFormColor mb-4"><b>CONTACTEZ MOI.</b></h3>
-        <div class="row mb-1">
-            {# {{form_widget(contactForm)}} #}
-            <div class="col">
+<style></style>
+<div class="container-fluid mt-5">
+    <div class="row">
+    <div class="col-md-3">&nbsp;</div>
+    <div class="col-md-6">
+        {{form_start(contactForm)}}
+            <h3 class="mb-4"><b>CONTACTEZ MOI.</b></h3>
+            <div class="form-group">
                 {{ form_row(contactForm.name)}}
-            </div>
-            <div class="col">
                 {{ form_row(contactForm.mail)}}
-            </div>
-        </div>
-        <div class="row mb-1">
-            <div class="col">
-                {# {{ form_row(contactForm.subject)}} #}
-            </div>
-        </div>
-        <div class="row mb-1">
-            <div class="col">
+                {{ form_row(contactForm.subject)}}
                 {{ form_row(contactForm.message)}}
             </div>
-        </div>
-        {#  <div class="h-captcha" data-sitekey="f982d320-0643-446f-9f8e-64c54a3a3323">e</div> #}
-    {{form_end(contactForm)}}
+        {{form_end(contactForm)}}
+    </div>
+    <div class="col-md-3">&nbsp;</div>   
+    </div>
 </div>
+
+
 {% endblock %}

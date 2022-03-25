@@ -28,7 +28,7 @@ class Contact
     private $mail;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text")
      */
     private $message;
 
@@ -36,6 +36,11 @@ class Contact
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $treated;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $subject;
 
     public function getId(): ?int
     {
@@ -86,6 +91,18 @@ class Contact
     public function setTreated(?bool $treated): self
     {
         $this->treated = $treated;
+
+        return $this;
+    }
+
+    public function getSubject(): ?string
+    {
+        return $this->subject;
+    }
+
+    public function setSubject(string $subject): self
+    {
+        $this->subject = $subject;
 
         return $this;
     }

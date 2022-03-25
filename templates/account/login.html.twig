@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Acces securisé!{% endblock %}
+
+{% block body %}
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-3">&nbsp;</div>
+            <div class="col-md-6">
+                <div class="bg-light py-3 px-3 mt-5 mb-5">
+                    <form action="{{ path('account_login') }}" method="post">
+                        <div class="form-group">
+                            <label for="login">login</label>
+                            <input type="text" name="_username" id="login" class="form-control" 
+                            placeholder="login" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Mot de passe</label>
+                            <input type="password" name="_password" id="password" class="form-control" 
+                            placeholder="Mot de passe" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success rounded">Connexion</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-3">&nbsp;</div>
+        </div>
+    </div>
+
+
+{% endblock %}
