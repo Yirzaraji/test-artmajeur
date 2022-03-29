@@ -3,8 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
-use Doctrine\Persistence\ObjectManager;
 use App\Form\ContactType;
+use App\Repository\ContactRepository;
+use Doctrine\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -61,5 +62,15 @@ class AccountController extends AbstractController
             'editContactForm' => $form->createView(),
             'contact' => $contact
         ]);
+    }
+
+    /**
+     * @Route("/api/contact", name="api_contact", methods={"GET"})
+     */
+    public function readUserMessage(ContactRepository $contactRepository)
+    {
+        $contact = $contactRepository->findAll();
+        $response = $this->json($contact, 200, []);
+        return $response;
     }
 }
