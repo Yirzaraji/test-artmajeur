@@ -17,6 +17,7 @@ class ContactType extends AbstractType
             ->add('mail')
             ->add('message')
             ->add('subject')
+            ->add('treated')
             ->add('Save', SubmitType::class, array('attr' => array('class' => 'btn btn-info contactForm', 'style' => 'color:white; font-weight:bold')))
         ;
     }

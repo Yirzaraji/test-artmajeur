@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% if app.user %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-9 text-center mt-5 mb-5">
+            {{form_start(editContactForm)}}
+                {{ form_widget(editContactForm) }}
+            {{form_end(editContactForm)}}
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

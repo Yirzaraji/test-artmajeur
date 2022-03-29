@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HomePageController extends AbstractController
 {
     /**
-     * @Route("/contact", name="app_home_page")
+     * @Route("/", name="app_home_page")
      */
     public function home(Request $request, ManagerRegistry $doctrine): Response
     {
