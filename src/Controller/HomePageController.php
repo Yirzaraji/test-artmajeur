@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-use App\Form\ContactType;
 use App\Entity\Contact;
+use App\Form\ContactType;
+use Doctrine\ORM\EntityNotFoundException;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,6 +27,7 @@ class HomePageController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $contact_message = $form->getData();
+            $contact_name = $form["name"]->getData();
             $entityManager->persist($contact_message);
             $entityManager->flush();
             
@@ -33,7 +35,18 @@ class HomePageController extends AbstractController
                 'success',
                 'Votre message a bien été <b<envoyé</b>'
             ); */
-            return $this->redirectToRoute('app_home_page');
+
+            //Return json file with name of the user
+            $response = $this->json($contact_message, 200, []);
+            $fs = new \Symfony\Component\Filesystem\Filesystem();
+            try {
+                $fs->dumpFile('..\src\Entity\Json\contact_'.$contact_name.'.json', $response);     
+            }
+            catch (EntityNotFoundException $e) {
+                echo 'Exception reçue : ',  $e->getMessage(), "\n";
+            }    
+
+            //return $this->redirectToRoute('app_home_page');
         }
         
         return $this->render('index.html.twig', [
