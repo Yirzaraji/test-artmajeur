@@ -6,8 +6,19 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12 col-md-9 text-center mt-5 mb-5">
+        {{dump(editContactForm.vars.value.treated)}}
             {{form_start(editContactForm)}}
-                {{ form_widget(editContactForm) }}
+                <div class="d-none">
+                    {{ form_row(editContactForm.subject) }}
+                    {{ form_row(editContactForm.message) }}
+                    {{ form_row(editContactForm.mail) }}
+                    {{ form_row(editContactForm.name) }}
+                </div>
+                <span class="fw-bold">SUJET</span></br>
+               <p>{{ReadContact.subject}}</p>
+                <span class="fw-bold">MESSAGE</span></br>
+                <p>{{ReadContact.message}}</p>
+                {{ form_row(editContactForm.treated) }}
             {{form_end(editContactForm)}}
         </div>
     </div>

@@ -16,7 +16,7 @@
                     <th scope="col">Mail</th>
                     <th scope="col">Sujet</th>
                     <th scope="col">Message</th>
-                    <th scope="col">Traité</th>
+                    <th scope="col">Status</th>
                     <th class="col-1" scope="col">Action</th>
                 </tr>
             </thead>
@@ -28,7 +28,11 @@
                     <td>{{contact.mail}}</td>
                     <td>{{contact.subject}}</td>
                     <td>{{contact.message|slice(0, 40)}}</td>
-                    <td>{{contact.treated}}</td>
+                    {% if contact.treated == false %}
+                    <td class="treatedBO">{{contact.treated}}</td>
+                    {% else %}
+                    <td>Traité</td>
+                    {% endif %}
                     <td style="font-size:1.4rem;">
                         <a class="mr-2" href="{{ path('contact', {'id': contact.id}) }}"><i class="far fa-eye"></i></a>
                     </td>
@@ -43,7 +47,7 @@
 <h3 class=" mb-4"><b>Connectez vous</b></h3>  
 {% endif %}
 {% for groupUserMessage in groupUserMessages %}
-    {{dump(groupUserMessage)}}
+    {# {{dump(groupUserMessage)}} #}
 {% endfor %}
 
 {% endblock %}

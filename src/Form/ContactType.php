@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class ContactType extends AbstractType
 {
@@ -18,7 +19,12 @@ class ContactType extends AbstractType
             ->add('message')
             ->add('subject')
             ->add('treated')
-            ->add('Save', SubmitType::class, array('attr' => array('class' => 'btn btn-info contactForm', 'style' => 'color:white; font-weight:bold')))
+            ->add('Save', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn btn-info contactForm', 
+                    'style' => 'color:white; font-weight:bold'
+                    ]
+                ])
         ;
     }
 

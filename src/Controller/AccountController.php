@@ -7,6 +7,7 @@ use App\Form\ContactType;
 use App\Repository\ContactRepository;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityNotFoundException;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,7 +32,7 @@ class AccountController extends AbstractController
         $contact = $doctrine->getRepository(Contact::class)->findBy([],['id' => 'desc']);
         
         $groupUserMessages = $doctrine->getRepository(Contact::class)->groupUserMessage();
-        dump($groupUserMessages);
+        //dump($groupUserMessages);
         return $this->render('account/backoffice.html.twig',
     [
         'contacts' => $contact,
@@ -47,6 +48,9 @@ class AccountController extends AbstractController
      */
     public function edit(Contact $contact, Request $request, EntityManagerInterface $manager)
     {
+        
+        $ReadContact = $manager->getRepository(Contact::class)->find($contact);
+
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
 
@@ -60,7 +64,8 @@ class AccountController extends AbstractController
 
         return $this->render('account/contactedit.html.twig', [
             'editContactForm' => $form->createView(),
-            'contact' => $contact
+            'contact' => $contact,
+            'ReadContact' => $ReadContact
         ]);
     }
 
@@ -72,5 +77,13 @@ class AccountController extends AbstractController
         $contact = $contactRepository->findAll();
         $response = $this->json($contact, 200, []);
         return $response;
+
+        $fs = new \Symfony\Component\Filesystem\Filesystem();
+        try {
+            $fs->dumpFile('..\src\Entity\Json\Contact.json', $response);     
+        }
+        catch (EntityNotFoundException $e) {
+            echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        }    
     }
 }
