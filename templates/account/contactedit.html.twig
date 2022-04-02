@@ -6,20 +6,27 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12 col-md-9 text-center mt-5 mb-5">
-        {{dump(editContactForm.vars.value.treated)}}
-            {{form_start(editContactForm)}}
-                <div class="d-none">
-                    {{ form_row(editContactForm.subject) }}
-                    {{ form_row(editContactForm.message) }}
-                    {{ form_row(editContactForm.mail) }}
-                    {{ form_row(editContactForm.name) }}
-                </div>
+        {# {{dump(form.vars.value.treated)}} #}
+        {% for ReadContactMail in ReadContactMails %}
+        {# {{dump(ReadContactMail)}} #}
                 <span class="fw-bold">SUJET</span></br>
-               <p>{{ReadContact.subject}}</p>
+               <p>{{ReadContactMail.subject}}</p>
                 <span class="fw-bold">MESSAGE</span></br>
-                <p>{{ReadContact.message}}</p>
-                {{ form_row(editContactForm.treated) }}
-            {{form_end(editContactForm)}}
+                <p>{{ReadContactMail.message}}</p>
+        {% endfor %}
+        {{form_start(form)}}
+                <div class="d-none">
+                    {{ form_row(form.subject) }}
+                    {{ form_row(form.message) }}
+                    {{ form_row(form.mail) }}
+                    {{ form_row(form.name) }}
+                </div>
+               {#  <span class="fw-bold">SUJET</span></br>
+               <p>{{ReadContactMail.subject}}</p>
+                <span class="fw-bold">MESSAGE</span></br>
+                <p>{{ReadContactMail.message}}</p>
+                {{ form_row(form.treated) }} #}
+            {{form_end(form)}}
         </div>
     </div>
 </div>

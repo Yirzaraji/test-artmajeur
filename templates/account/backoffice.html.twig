@@ -21,20 +21,24 @@
                 </tr>
             </thead>
             <tbody>
-                {% for contact in contacts %}
+                {% for contact in groupUserMail %}
                 <tr>
                     <th scope="row">{{contact.id}}</th>
                     <td>{{contact.name}}</td>
                     <td>{{contact.mail}}</td>
                     <td>{{contact.subject}}</td>
                     <td>{{contact.message|slice(0, 40)}}</td>
+                    
                     {% if contact.treated == false %}
                     <td class="treatedBO">{{contact.treated}}</td>
                     {% else %}
                     <td>Traité</td>
                     {% endif %}
                     <td style="font-size:1.4rem;">
-                        <a class="mr-2" href="{{ path('contact', {'id': contact.id}) }}"><i class="far fa-eye"></i></a>
+                        <a 
+                        class="mr-2" 
+                        href="{{ path('contact', {'id': contact.id,'mail': contact.mail}) }}">
+                        <i class="far fa-eye"></i></a>
                     </td>
                 </tr>
                 {% endfor %}

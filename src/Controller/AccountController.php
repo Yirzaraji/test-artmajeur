@@ -32,24 +32,30 @@ class AccountController extends AbstractController
         $contact = $doctrine->getRepository(Contact::class)->findBy([],['id' => 'desc']);
         
         $groupUserMessages = $doctrine->getRepository(Contact::class)->groupUserMessage();
+        $groupUserMail = $doctrine->getRepository(Contact::class)->groupUserMail();
         //dump($groupUserMessages);
         return $this->render('account/backoffice.html.twig',
     [
         'contacts' => $contact,
-        'groupUserMessages' => $groupUserMessages
+        'groupUserMessages' => $groupUserMessages,
+        'groupUserMail' => $groupUserMail
     ]);
     }
 
     /**
      * user message state
      * 
-     * @Route("/backoffice/edit-{id}", name="contact")
+     * @Route("/backoffice/edit-{id}-{mail}", name="contact")
      * @return Response
      */
     public function edit(Contact $contact, Request $request, EntityManagerInterface $manager)
     {
         
-        $ReadContact = $manager->getRepository(Contact::class)->find($contact);
+        //$ReadContact = $manager->getRepository(Contact::class)->find($contact);
+
+        $ReadContactMails = $manager->getRepository(Contact::class)->findBy(
+            ['mail' => $contact->getMail()]
+        );
 
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
@@ -63,9 +69,10 @@ class AccountController extends AbstractController
         }
 
         return $this->render('account/contactedit.html.twig', [
-            'editContactForm' => $form->createView(),
+            'form' => $form->createView(),
             'contact' => $contact,
-            'ReadContact' => $ReadContact
+            'ReadContactMails' => $ReadContactMails
+            // 'ReadContact' => $ReadContact
         ]);
     }
 

@@ -2,30 +2,30 @@
 
 namespace App\Repository;
 
-use App\Entity\Contact;
+use App\Entity\ContactPhp;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Contact|null find($id, $lockMode = null, $lockVersion = null)
- * @method Contact|null findOneBy(array $criteria, array $orderBy = null)
- * @method Contact[]    findAll()
- * @method Contact[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method ContactPhp|null find($id, $lockMode = null, $lockVersion = null)
+ * @method ContactPhp|null findOneBy(array $criteria, array $orderBy = null)
+ * @method ContactPhp[]    findAll()
+ * @method ContactPhp[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ContactRepository extends ServiceEntityRepository
+class ContactPhpRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Contact::class);
+        parent::__construct($registry, ContactPhp::class);
     }
 
     /**
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function add(Contact $entity, bool $flush = true): void
+    public function add(ContactPhp $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
         if ($flush) {
@@ -37,7 +37,7 @@ class ContactRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(Contact $entity, bool $flush = true): void
+    public function remove(ContactPhp $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
         if ($flush) {
@@ -46,7 +46,7 @@ class ContactRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Contact[] Returns an array of Contact objects
+    //  * @return ContactPhp[] Returns an array of ContactPhp objects
     //  */
     /*
     public function findByExampleField($value)
@@ -62,22 +62,15 @@ class ContactRepository extends ServiceEntityRepository
     }
     */
 
-    public function groupUserMessage()
+    /*
+    public function findOneBySomeField($value): ?ContactPhp
     {
         return $this->createQueryBuilder('c')
-            ->groupBy('c.mail')
-            ->having('COUNT(c.mail) > 1')
+            ->andWhere('c.exampleField = :val')
+            ->setParameter('val', $value)
             ->getQuery()
-            ->getResult()
+            ->getOneOrNullResult()
         ;
     }
-
-    public function groupUserMail()
-    {
-        return $this->createQueryBuilder('c')
-            ->groupBy('c.mail')
-            ->getQuery()
-            ->getResult()
-        ;
-    }
+    */
 }
