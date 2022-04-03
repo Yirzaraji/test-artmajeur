@@ -11,9 +11,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Contact
 {
-    const TREATED_TRUE  = 1;
-    const TREATED_FALSE = 0;
-
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

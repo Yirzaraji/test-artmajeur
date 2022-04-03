@@ -30,15 +30,13 @@
                     <td>{{contact.message|slice(0, 40)}}</td>
                     
                     {% if contact.treated == false %}
-                    <td class="treatedBO">{{contact.treated}}</td>
+                        <td class="treatedBO">{{contact.treated}}</td>
                     {% else %}
-                    <td>Traité</td>
+                        <td>Traité</td>
                     {% endif %}
                     <td style="font-size:1.4rem;">
-                        <a 
-                        class="mr-2" 
-                        href="{{ path('contact', {'id': contact.id,'mail': contact.mail}) }}">
-                        <i class="far fa-eye"></i></a>
+                        <a class="mr-2" href="{{ path('contact', {'id': contact.id,'mail': contact.mail}) }}">
+                        <i class="far fa-eye"></i></a> 
                     </td>
                 </tr>
                 {% endfor %}
@@ -50,9 +48,6 @@
 {% else %}
 <h3 class=" mb-4"><b>Connectez vous</b></h3>  
 {% endif %}
-{% for groupUserMessage in groupUserMessages %}
-    {# {{dump(groupUserMessage)}} #}
-{% endfor %}
 
 {% endblock %}
 

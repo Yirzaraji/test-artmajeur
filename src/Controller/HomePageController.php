@@ -19,22 +19,16 @@ class HomePageController extends AbstractController
     public function home(Request $request, ManagerRegistry $doctrine): Response
     {
         $entityManager = $doctrine->getManager();
-
         $contact_message = new Contact();
         $form = $this->createForm(ContactType::class);
-
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
 
             $contact_message = $form->getData();
             $contact_name = $form["name"]->getData();
             $entityManager->persist($contact_message);
             $entityManager->flush();
-            
-            /* $this->addFlash(
-                'success',
-                'Votre message a bien été <b<envoyé</b>'
-            ); */
 
             //Return json file with name of the user
             $response = $this->json($contact_message, 200, []);
@@ -46,12 +40,11 @@ class HomePageController extends AbstractController
                 echo 'Exception reçue : ',  $e->getMessage(), "\n";
             }    
 
-            //return $this->redirectToRoute('app_home_page');
+            return $this->redirectToRoute('app_home_page');
         }
         
-        return $this->render('index.html.twig', [
-            'contactForm' => $form->createView(),
-            'controller_name' => 'HomePageController',
+        return $this->render('contact.html.twig', [
+            'contactForm' => $form->createView()
         ]);
     }
 }
