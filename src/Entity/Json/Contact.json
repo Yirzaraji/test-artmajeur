@@ -1,6 +1,0 @@
-HTTP/1.0 200 OK
-Cache-Control: no-cache, private
-Content-Type:  application/json
-Date:          Fri, 01 Apr 2022 02:36:08 GMT
-
-[{"id":1,"name":"test","mail":"dzd@gmail.com","message":"qzdqfqzeqdqd","treated":true,"subject":"dzd"},{"id":2,"name":"qzd","mail":"dzd@gmail.com","message":"qzddqdzqsdzqdz","treated":true,"subject":"qzdqd"},{"id":3,"name":"retest","mail":"retest@gmail.com","message":"test de message","treated":false,"subject":"coucou"},{"id":4,"name":"htjjt","mail":"dzeqzeqd@gmail.com","message":"qdfrgdfgdg","treated":false,"subject":"coucouqdqz"},{"id":5,"name":"htjjtqzdq","mail":"dzd@gmail.comqzd","message":"dqzfsfrdgrg","treated":true,"subject":"qzdsdqfe"}]
