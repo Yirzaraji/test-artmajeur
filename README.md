@@ -9,7 +9,7 @@ Pour deployer le projet:
         php bin/console make:migration
         php bin/console doctrine:migrations:migrate
 
-    Hydrater la db avec la fixture:
+    Charger la fixture:
         php bin/console doctrine:fixtures:load
 
 Pour se log sur la route /login
