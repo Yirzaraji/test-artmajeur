@@ -29,8 +29,14 @@ class HomePageController extends AbstractController
             $entityManager->persist($contact_message);
             $entityManager->flush();
 
-            //Return json file with name + ID
-            $response = $this->json($contact_message, 200, []);
+            //Return json file with name + ID + message
+            $response_json = [
+                "name" => $contact_message->getName(), 
+                "mail"=> $contact_message->getMail(), 
+                "message"=> $contact_message->getMessage()
+            ];
+
+            $response = $this->json($response_json, 200, []);
             $fs = new \Symfony\Component\Filesystem\Filesystem();
             try {
                 $fs->dumpFile('..\src\Entity\Json\contact_'.$contact_message->getName().$contact_message->getId().'.json', $response);     

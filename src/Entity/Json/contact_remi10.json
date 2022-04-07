@@ -1,6 +1,0 @@
-HTTP/1.0 200 OK
-Cache-Control: no-cache, private
-Content-Type:  application/json
-Date:          Thu, 07 Apr 2022 01:22:36 GMT
-
-{"id":10,"name":"remi","mail":"qds@gmail.com","message":"coucoucoucoucoucoucoucoucoucoucoucoucoucoucoucoucoucoucoucoucoucou","treated":false,"subject":"ca"}
