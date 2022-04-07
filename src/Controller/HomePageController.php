@@ -26,15 +26,14 @@ class HomePageController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $contact_message = $form->getData();
-            $contact_name = $form["name"]->getData();
             $entityManager->persist($contact_message);
             $entityManager->flush();
 
-            //Return json file with name of the user
+            //Return json file with name + ID
             $response = $this->json($contact_message, 200, []);
             $fs = new \Symfony\Component\Filesystem\Filesystem();
             try {
-                $fs->dumpFile('..\src\Entity\Json\contact_'.$contact_name.'.json', $response);     
+                $fs->dumpFile('..\src\Entity\Json\contact_'.$contact_message->getName().$contact_message->getId().'.json', $response);     
             }
             catch (EntityNotFoundException $e) {
                 echo 'Exception reçue : ',  $e->getMessage(), "\n";

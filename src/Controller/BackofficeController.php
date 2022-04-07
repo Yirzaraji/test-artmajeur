@@ -6,6 +6,7 @@ use App\Entity\Contact;
 use App\Form\ContactType;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,18 +17,24 @@ class BackofficeController extends AbstractController
     /**
      * @Route("/backoffice", name="back_office")
      */
-    public function backoffice(ManagerRegistry $doctrine)
+    public function backoffice(Request $request, PaginatorInterface $paginator, ManagerRegistry $doctrine) :response
     {
-        $contact = $doctrine->getRepository(Contact::class)->findBy([
+        /* $contact = $doctrine->getRepository(Contact::class)->findBy([
             'id' => 'desc'
-        ]);
-        
-        //$groupUserMessages = $doctrine->getRepository(Contact::class)->groupUserMessage();
+        ]); */
+
         $groupUserMail = $doctrine->getRepository(Contact::class)->groupUserMail();
+        //pagination
+        $pagination = $paginator->paginate(
+            $groupUserMail,
+            $request->query->getInt('page', 1),
+            5
+        );
+        //$groupUserMessages = $doctrine->getRepository(Contact::class)->groupUserMessage();
+        
         return $this->render('backoffice.html.twig',
     [
-        'contacts' => $contact,
-        'groupUserMail' => $groupUserMail
+        'groupUserMail' => $pagination
     ]);
     }
 

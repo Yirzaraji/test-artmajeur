@@ -1,6 +1,0 @@
-HTTP/1.0 200 OK
-Cache-Control: no-cache, private
-Content-Type:  application/json
-Date:          Wed, 06 Apr 2022 08:14:20 GMT
-
-{"id":6,"name":"remm","mail":"dzd@gmail.com","message":"qzdqdsqzqzdqdsqzqzdqdsqzqzdqdsqzqzdqdsqzqzdqdsqzqzdqdsqz","treated":false,"subject":"dqzd"}

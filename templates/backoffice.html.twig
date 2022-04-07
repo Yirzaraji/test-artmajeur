@@ -4,7 +4,7 @@
 
 {% block body %}
 
-{% if app.user %}
+{% if app.user and is_granted('ROLE_ADMIN') %}
 <div class="container-fluid">
     <div class="row">
         <h3 class=" mb-4"><b>Backoffice</b></h3>
@@ -42,6 +42,7 @@
                 {% endfor %}
             </tbody>
         </table>
+        {{knp_pagination_render(groupUserMail)}}
     </div>
 </div>
 

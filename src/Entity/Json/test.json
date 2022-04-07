@@ -1,6 +1,0 @@
-HTTP/1.0 200 OK
-Cache-Control: no-cache, private
-Content-Type:  application/json
-Date:          Fri, 01 Apr 2022 03:00:06 GMT
-
-{"id":9,"name":"htjjtqzdq","mail":"qds@gmail.com","message":"blablablablablablablablablablablablablablablablablablablablabla","treated":false,"subject":"coucouqd"}

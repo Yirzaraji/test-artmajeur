@@ -1,6 +1,0 @@
-HTTP/1.0 200 OK
-Cache-Control: no-cache, private
-Content-Type:  application/json
-Date:          Sat, 02 Apr 2022 06:32:03 GMT
-
-{"id":5,"name":"remi","mail":"test2@gmail.com","message":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel ligula vel metus pellentesque suscipit. Pellentesque a porta purus. Etiam fermentum tellus in turpis placerat, in scelerisque metus ultrices. Integer est neque, commodo at mi eget, posuere tempor risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget arcu eget purus aliquam placerat vitae et nisi. Ut eget neque","treated":false,"subject":"bug"}
